@@ -1,0 +1,78 @@
+<html>
+	<font size="8" color="green">Final test lab</font><br><br>
+	Number of rows: <input type="text" id="t1" /><br><br>
+	Number of cols: <input type="text" id="t2" /><br><br>
+	
+	<button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+	
+	<button id="b2" onclick="addColumn()">Add Column</button>
+	
+	<button id="b3" onclick="addRow()">Add Row</button>
+		
+	<script language="javascript">
+		
+		//Your code goes here
+
+			var table = document.createElement("TABLE");
+			var body = document.createElement("TBODY");
+	
+            var rows = document.getElementById("t1");
+            var columns = document.getElementById("t2");
+			let flag
+			// let clearTag = document.getElementsByTagName("HTML")
+
+		function generateTable(){
+
+			table.appendChild(body);
+
+			flag = parseInt(columns.value);
+
+			for (var x = 0; x < rows.value; x++) {
+    			let tableRow = document.createElement('TR');
+    			body.appendChild(tableRow);
+
+    			for (var y = 0; y < columns.value; y++) {
+      			let tableData = document.createElement('TD');
+      			
+
+				var text = document.createTextNode("cell");
+      			tableData.appendChild(text);
+      			tableRow.appendChild(tableData);
+   					 }
+  				}
+ 			 	document.body.appendChild(table);
+
+				document.getElementsByTagName("html")[0].style.fontSize = "0"
+				document.getElementById("t1").style.display="none"
+				document.getElementById("t2").style.display="none"
+				document.getElementById("b1").style.display="none"
+				document.getElementsByTagName("font")[0].style.fontSize = "0"
+				
+
+		}
+
+		function addRow() 
+	   {
+
+		let row = table.insertRow(-1);
+				for(let i=flag-1;i>=0;i--){
+				let cell = row.insertCell(0);
+				cell.appendChild(document.createTextNode("cell"));
+			}
+		
+		
+		}
+
+		function addColumn(){
+		
+		var tableBody = table.tBodies[0];
+		for (var i=0; i<tableBody.rows.length; i++) {
+			var cell = tableBody.rows[i].insertCell(-1);
+			cell.appendChild(document.createTextNode("cell"));
+		}
+		flag = flag + 1
+		}
+	
+	</script>
+	
+</html>
